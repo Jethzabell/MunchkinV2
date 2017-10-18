@@ -11,6 +11,27 @@
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/Team-with-rotating-cards.css">
+
+    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase-auth.js"></script>
+
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBxNiW43QLES6cTIncOrOqTKbYpivgLM4w",
+        authDomain: "veryfirst-e4512.firebaseapp.com",
+        databaseURL: "https://veryfirst-e4512.firebaseio.com",
+        projectId: "veryfirst-e4512",
+        storageBucket: "veryfirst-e4512.appspot.com",
+        messagingSenderId: "962525809825"
+      };
+      firebase.initializeApp(config);
+
+      var bigOne = document.getElementById('bigOne');
+      var dbRef = firebase.database().ref().child('Users.Elliot.Gear');
+      dbRef.on('value', snap => bigOne.innerText = snap.val());
+    </script>
 </head>
 
 <body>
@@ -25,7 +46,7 @@
                         <div class="card-imagia"></div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Player </h3></div>
+                                <h3 class="panel-title" id="bigOne"></h3></div>
                             <div class="panel-body"><img class="img-responsive" src="assets/img/75.png" style="margin:0px;height:190px;width:190px;margin-left:37px;"></div>
                         </div>
                         <div class="btn-group btn-group-lg" role="group" style="margin-left:60px;margin-bottom:3px;">
