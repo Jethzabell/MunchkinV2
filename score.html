@@ -27,7 +27,7 @@
                         <div class="card-imagia"></div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title" id="bigOne"></h3></div>
+                                <h3 class="panel-title">Players</h3></div>
                             <div class="panel-body"><img class="img-responsive" src="assets/img/75.png" style="margin:0px;height:190px;width:190px;margin-left:37px;"></div>
                         </div>
                         <div class="btn-group btn-group-lg" role="group" style="margin-left:60px;margin-bottom:3px;">
@@ -122,10 +122,19 @@
         messagingSenderId: "962525809825"
       };
       firebase.initializeApp(config);
+      database = firebase.database();
 
-      var bigOne = document.getElementById('bigOne');
-      var dbRef = firebase.database().ref().child('Users');
-      dbRef.on('value', snap => bigOne.innerText = snap.val());
+      var ref = database.ref('users');
+      ref.on('value', gotData, errData);
+
+      function gotData(data) {
+        console.log(data);
+
+      }
+      function errData(err) {
+        console.log('Error!');
+        console.log(err);
+      }
     </script>
 
 </body>
