@@ -88,7 +88,7 @@ function insertAutoKey() {
   //A post entry
   var postData = {
     Gear:gear,
-    Level:Level,
+    Level:level,
     Strenght:strenght
   };
 
