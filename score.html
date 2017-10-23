@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/Team-with-rotating-cards.css">
 
     <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+
 </head>
 
 <body>
@@ -111,32 +112,7 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-animation.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyBxNiW43QLES6cTIncOrOqTKbYpivgLM4w",
-        authDomain: "veryfirst-e4512.firebaseapp.com",
-        databaseURL: "https://veryfirst-e4512.firebaseio.com",
-        projectId: "veryfirst-e4512",
-        storageBucket: "veryfirst-e4512.appspot.com",
-        messagingSenderId: "962525809825"
-      };
-      firebase.initializeApp(config);
-      database = firebase.database();
-
-      var ref = database.ref('users');
-      ref.on('value', gotData, errData);
-
-      function gotData(data) {
-        console.log(data.val());
-
-      }
-      function errData(err) {
-        console.log('Error!');
-        console.log(err);
-      }
-    </script>
-
+    <script src="firedb.js"></script>
 </body>
 
 </html>
