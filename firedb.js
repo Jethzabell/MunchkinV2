@@ -85,6 +85,8 @@ function insertAutoKey() {
   var level = document.getElementById('level').value;
   var strenght = document.getElementById('strenght').value;
 
+  const dbRefObject = firebase.database().ref().child('Users');
+
   //A post entry
   var postData = {
     Gear:gear,
@@ -96,7 +98,8 @@ function insertAutoKey() {
   var newPostKey = dbRefObject.push().key;
   // Write the new post's data simultaneously in the posts list and the user's post list
   var updates = {};
-  uppdates['/Users/Jethzabell'+ newPostKey] = postData;
+  updates['/Users/Jethzabell'] = postData;
+  //updates['/Users/Jethzabell'+ newPostKey] = postData;
   //updates['/user-posts/' + uid + '/' + newPostKey] = postData;
   return firebase.database().ref().update(updates);
 }
