@@ -3,18 +3,9 @@
   <head>
     <meta charset="UTF-8">
     <title>Sample FirebaseUI App</title>
+
     // Initialize Firebase
-    <script>
-      var config = {
-        apiKey: "AIzaSyBxNiW43QLES6cTIncOrOqTKbYpivgLM4w",
-        authDomain: "veryfirst-e4512.firebaseapp.com",
-        databaseURL: "https://veryfirst-e4512.firebaseio.com",
-        projectId: "veryfirst-e4512",
-        storageBucket: "veryfirst-e4512.appspot.com",
-        messagingSenderId: "962525809825"
-      };
-      firebase.initializeApp(config);
-    </script>
+    <script src="config.js"></script>
 
     <script src="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.css" />
@@ -45,6 +36,8 @@
     <!-- The surrounding HTML is left untouched by FirebaseUI.
          Your app may use that space for branding, controls and other customizations.-->
     <h1>Welcome to My Awesome App</h1>
-    <div id="firebaseui-auth-container"></div>
+    <div id="firebaseui-auth-container">
+
+    </div>
   </body>
 </html>
