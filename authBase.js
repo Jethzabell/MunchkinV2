@@ -35,9 +35,10 @@ function signIn(){
 }
 
 //Handle Account Status
-firebase.auth().onAuthStateChanged(user => {
+/*firebase.auth().onAuthStateChanged(user => {
   if(user) {
     //window.location = 'tutorial.html'; //After successful login, user will be redirected to home.html
     console.log(user.displayName);
   }
 });
+*/
