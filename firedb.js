@@ -2,14 +2,13 @@
   //Get elements
   const preObject = document.getElementById('object');
   const ulTable = document.getElementById('tabla');
-
   //Create references
   const dbRefObject = firebase.database().ref().child('Users');
 
-  //Sync object changes
-  dbRefObject.on('value', snap => {
-    preObject.innerText = JSON.stringify(snap.val(), null, 3);
-  });
+  //Sync object changes - tutorial.html
+  // dbRefObject.on('value', snap => {
+  //   preObject.innerText = JSON.stringify(snap.val(), null, 3);
+  // });
 
   //Sync table changes
   dbRefObject.on('child_added', snap => {
@@ -44,8 +43,7 @@
 
 }()); //end of function
 
-
-function insertData(gear, level, strenght) {
+function insertData() {
 
   var gear = document.getElementById('gear').value;
   var level = document.getElementById('level').value;
@@ -67,11 +65,120 @@ function insertData(gear, level, strenght) {
   });*/
 }
 
-
 function insertAutoKey() {
   var gear = document.getElementById('gear').value;
   var level = document.getElementById('level').value;
   var strenght = document.getElementById('strenght').value;
+  const dbRefObject = firebase.database().ref().child('Users');
+
+  parseInt(gear);
+  parseInt(strenght);
+  parseInt(level);
+
+  //A post entry
+  var postData = {
+    Gear:gear,
+    Level:level,
+    Strenght:strenght
+  };
+
+  //Get a key for a new post
+  var newPostKey = dbRefObject.push().key;
+  // Write the new post's data simultaneously in the posts list and the user's post list
+  var updates = {};
+  updates['/Users/Jethzabell'] = postData;
+  //updates['/Users/Jethzabell'+ newPostKey] = postData;
+  //updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+  return firebase.database().ref().update(updates);
+}
+
+//-----Getters------
+function getGear(){
+  var gear;
+  const preObject = document.getElementById('gearOut');
+
+  //Create references
+  const dbRef = firebase.database().ref().child('Users/Jethzabell/Gear');
+
+  //Sync object changes - tutorial.html
+  dbRef.on('value', snap => {
+    preObject.innerText = snap.val();
+    gear = snap.val();
+  });
+
+  return gear;
+}
+
+function getStrenght(){
+  var strenght;
+  const preObject = document.getElementById('strenghtOut');
+
+  //Create references
+  const dbRef = firebase.database().ref().child('Users/Jethzabell/Strenght');
+
+  //Sync object changes - tutorial.html
+  dbRef.on('value', snap => {
+    preObject.innerText = snap.val();
+    strenght = snap.val();
+  });
+
+  return strenght;
+}
+
+function getLevel(){
+  var level;
+  const preObject = document.getElementById('levelOut');
+
+  //Create references
+  const dbRef = firebase.database().ref().child('Users/Jethzabell/Level');
+
+  //Sync object changes - tutorial.html
+  dbRef.on('value', snap => {
+    preObject.innerText = snap.val();
+    level = snap.val();
+  });
+
+  return level;
+}
+
+//------- Up --------
+function levelUp(){
+  var level = getLevel();
+  var gear = getGear();
+  var strenght = getStrenght();
+  level++;
+  strenght = gear + level;
+  updateOps(gear, level, strenght)
+}
+
+function gearUp(){
+  var level = getLevel();
+  var gear = getGear();
+  var strenght = getStrenght();
+  gear++;
+  strenght = gear + level;
+  updateOps(gear, level, strenght)
+}
+//------ Down -------
+function gearDown(){
+  var level = getLevel();
+  var gear = getGear();
+  var strenght = getStrenght();
+  gear--;
+  strenght = level + gear;
+  updateOps(gear, level, strenght)
+}
+
+function levelDown(){
+  var level = getLevel();
+  var gear = getGear();
+  var strenght = getStrenght();
+  level--;
+  strenght = gear + level;
+  updateOps(gear, level, strenght)
+}
+//--- Update Ops ----
+function updateOps(gear, level, strenght){
 
   const dbRefObject = firebase.database().ref().child('Users');
 
@@ -91,6 +198,15 @@ function insertAutoKey() {
   //updates['/user-posts/' + uid + '/' + newPostKey] = postData;
   return firebase.database().ref().update(updates);
 }
+
+
+
+
+
+
+
+
+
 
 
 
