@@ -1,8 +1,3 @@
-//The code below initializes the sign-in widget from FirebaseUI web
-<script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
-<script type="text/javascript">
-
 // FirebaseUI config.
 var uiConfig = {
   signInSuccessUrl: 'tutorial.html',
