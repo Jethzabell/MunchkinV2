@@ -1,50 +1,25 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Sample FirebaseUI App</title>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Munchkin</title>
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
-  <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="assets/css/Team-with-rotating-cards.css">
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <!-- databaseURL -->
+    <script src="config.js"></script>
+    <!-- firebase-auth -->
+    <!-- initializes the sign-in widget from FirebaseUI web -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.css" />
+    <script src="fireAuth.js"></script>
 
-  <!--  START FireBase  -->
-  <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-auth.js"></script>
-  <!-- <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-database.js"></script> -->
-  <!-- <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-app.js"></script> -->
-  <script src="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.js"></script>
-
-  <!-- //DB_CONFIG -->
-  <script src="config.js"></script>
-  <!--  END FireBase  -->
-</head>
-
-<body>
-    <div class="login-clean" style="height:650px;">
-        <form method="post" data-aos="fade-right" data-aos-duration="250">
-            <h2 class="sr-only">Login Form</h2>
-            <div class="illustration"><i class="icon-login"></i></div>
-            <div class="form-group"></div>
-            <div class="form-group"></div>
-            <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit" onclick="signIn()">GMAIL </button>
-            </div>
-        </form>
-    </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-animation.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
-
-
-    <!-- //firebase -->
-    <script src="authBase.js"></script>
-</body>
-
+  </head>
+  <body>
+      <h1 align="center" style="color:white;">Firebase Auth Quickstart Demo</h1>
+      <div id="firebaseui-auth-container"></div>
+      <!-- Tracking Auth -->
+      <div id="sign-in-status"></div>
+      <div id="sign-in"></div>
+      <div id="account-details"></div>
+  </body>
 </html>

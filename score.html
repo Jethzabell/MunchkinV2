@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/Team-with-rotating-cards.css">
 
-    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+    <!-- My firebase code -->
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
     <script src="config.js"></script>
 </head>
 
@@ -20,7 +21,7 @@
     <div></div>
     <section class="card-section-imagia">
         <h1>Munchkin</h1>
-        <h2>scoreboard </h2>
+        <h2>Scoreboard</h2>
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-sm-6">
@@ -54,7 +55,7 @@
                     <div class="card-container-imagia">
                         <div class="card-imagia"></div>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="tabla">
                                 <thead>
                                     <tr>
                                         <th>Player </th>
@@ -64,42 +65,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>1 </td>
-                                        <td>0 </td>
-                                        <td>1 </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2 </td>
-                                        <td>1 </td>
-                                        <td>0 </td>
-                                        <td>1 </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3 </td>
-                                        <td>1 </td>
-                                        <td>0 </td>
-                                        <td>1 </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4 </td>
-                                        <td>1 </td>
-                                        <td>0 </td>
-                                        <td>1 </td>
-                                    </tr>
-                                    <tr>
-                                        <td>5 </td>
-                                        <td>1 </td>
-                                        <td>0 </td>
-                                        <td>1 </td>
-                                    </tr>
-                                    <tr>
-                                        <td>6 </td>
-                                        <td>1 </td>
-                                        <td>0 </td>
-                                        <td>1 </td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -112,6 +78,8 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-animation.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+
+    <!-- my firebase code -->
     <script src="firedb.js"></script>
 </body>
 
