@@ -98,7 +98,7 @@ function getGear(){
   const preObject = document.getElementById('gearOut');
 
   //Create references
-  const dbRef = firebase.database().ref().child('Users/Jethzabell/Gear');
+  const dbRef = firebase.database().ref().child('Users/currentUser/Gear');
 
   //Sync object changes - tutorial.html
   dbRef.on('value', snap => {
@@ -114,7 +114,7 @@ function getStrenght(){
   const preObject = document.getElementById('strenghtOut');
 
   //Create references
-  const dbRef = firebase.database().ref().child('Users/Jethzabell/Strenght');
+  const dbRef = firebase.database().ref().child('Users/currentUser/Strenght');
 
   //Sync object changes - tutorial.html
   dbRef.on('value', snap => {
@@ -130,7 +130,7 @@ function getLevel(){
   const preObject = document.getElementById('levelOut');
 
   //Create references
-  const dbRef = firebase.database().ref().child('Users/Jethzabell/Level');
+  const dbRef = firebase.database().ref().child('Users/currentUser/Level');
 
   //Sync object changes - tutorial.html
   dbRef.on('value', snap => {
