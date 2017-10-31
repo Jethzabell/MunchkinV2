@@ -193,7 +193,7 @@ var currentUser = firebase.auth().currentUser.uid;
   var newPostKey = dbRefObject.push().key;
   // Write the new post's data simultaneously in the posts list and the user's post list
   var updates = {};
-  updates['/Users/+currentUser'] = postData;
+  updates['/Users/currentUser'] = postData;
   //updates['/Users/Jethzabell'+ newPostKey] = postData;
   //updates['/user-posts/' + uid + '/' + newPostKey] = postData;
   return firebase.database().ref().update(updates);
