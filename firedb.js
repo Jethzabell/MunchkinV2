@@ -167,6 +167,8 @@ function gearDown(){
   gear--;
   strenght = level + gear;
   updateOps(gear, level, strenght)
+  var currentUser = firebase.auth().currentUser.uid;
+  console.log(currentUser);
 }
 
 function levelDown(){
@@ -181,7 +183,7 @@ function levelDown(){
 function updateOps(gear, level, strenght){
 
   const dbRefObject = firebase.database().ref().child('Users');
-
+//var currentUser = firebase.auth().currentUser.uid;
   //A post entry
   var postData = {
     Gear:gear,
