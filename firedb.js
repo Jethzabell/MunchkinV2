@@ -4,7 +4,6 @@
   const ulTable = document.getElementById('tabla');
   //Create references
   const dbRefObject = firebase.database().ref().child('Users');
-  var currentUser;
   //Sync object changes - tutorial.html
   // dbRefObject.on('value', snap => {
   //   preObject.innerText = JSON.stringify(snap.val(), null, 3);
@@ -97,8 +96,6 @@ function getGear(){
   var gear;
   const preObject = document.getElementById('gearOut');
 
-  currentUser = firebase.auth().currentUser.uid;
-
   //Create references
   const dbRef = firebase.database().ref().child('Users/currentUser/Gear');
 
@@ -114,7 +111,6 @@ function getGear(){
 function getStrenght(){
   var strenght;
   const preObject = document.getElementById('strenghtOut');
-   currentUser = firebase.auth().currentUser.uid;
 
   //Create references
   const dbRef = firebase.database().ref().child('Users/currentUser/Strenght');
@@ -131,9 +127,7 @@ function getStrenght(){
 function getLevel(){
   var level;
   const preObject = document.getElementById('levelOut');
-
-   currentUser = firebase.auth().currentUser.uid;
-
+//var currentUser = firebase.auth().currentUser.uid;
   //Create references
   const dbRef = firebase.database().ref().child('Users/currentUser/Level');
 
