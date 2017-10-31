@@ -4,7 +4,7 @@
   const ulTable = document.getElementById('tabla');
   //Create references
   const dbRefObject = firebase.database().ref().child('Users');
-
+  var currentUser = firebase.auth().currentUser.uid;
   //Sync object changes - tutorial.html
   // dbRefObject.on('value', snap => {
   //   preObject.innerText = JSON.stringify(snap.val(), null, 3);
@@ -181,7 +181,7 @@ function levelDown(){
 function updateOps(gear, level, strenght){
 
   const dbRefObject = firebase.database().ref().child('Users');
-var currentUser = firebase.auth().currentUser.uid;
+
   //A post entry
   var postData = {
     Gear:gear,
