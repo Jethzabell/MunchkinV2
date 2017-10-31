@@ -166,6 +166,7 @@ function gearDown(){
   var strenght = getStrenght();
   gear--;
   strenght = level + gear;
+  console.log(user.displayName);
   updateOps(gear, level, strenght)
 }
 
