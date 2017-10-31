@@ -181,6 +181,7 @@ function updateOps(gear, level, strenght){
 
   const dbRefObject = firebase.database().ref().child('Users');
 
+
   //A post entry
   var postData = {
     Gear:gear,
