@@ -2,6 +2,7 @@
   //Get elements
   const preObject = document.getElementById('object');
   const ulTable = document.getElementById('tabla');
+  var currentUser = firebase.auth().currentUser.uid;
   //Create references
   const dbRefObject = firebase.database().ref().child('Users');
   //Sync object changes - tutorial.html
@@ -97,7 +98,7 @@ function getGear(){
   const preObject = document.getElementById('gearOut');
 
   //Create references
-  const dbRef = firebase.database().ref().child('Users/currentUser/Gear');
+  const dbRef = firebase.database().ref().child('Users/'+currentUser+'/Gear');
 
   //Sync object changes - tutorial.html
   dbRef.on('value', snap => {
@@ -113,7 +114,7 @@ function getStrenght(){
   const preObject = document.getElementById('strenghtOut');
 
   //Create references
-  const dbRef = firebase.database().ref().child('Users/currentUser/Strenght');
+  const dbRef = firebase.database().ref().child('Users/'+currentUser+'/Strenght');
 
   //Sync object changes - tutorial.html
   dbRef.on('value', snap => {
@@ -127,9 +128,8 @@ function getStrenght(){
 function getLevel(){
   var level;
   const preObject = document.getElementById('levelOut');
-//var currentUser = firebase.auth().currentUser.uid;
   //Create references
-  const dbRef = firebase.database().ref().child('Users/currentUser/Level');
+  const dbRef = firebase.database().ref().child('Users/'+currentUser+'/Level');
 
   //Sync object changes - tutorial.html
   dbRef.on('value', snap => {
@@ -192,7 +192,7 @@ function updateOps(gear, level, strenght){
   var newPostKey = dbRefObject.push().key;
   // Write the new post's data simultaneously in the posts list and the user's post list
   var updates = {};
-  updates['/Users/currentUser'] = postData;
+  updates['/Users/'+currentUser] = postData;
   //updates['/Users/Jethzabell'+ newPostKey] = postData;
   //updates['/user-posts/' + uid + '/' + newPostKey] = postData;
   return firebase.database().ref().update(updates);
