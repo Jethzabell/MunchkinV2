@@ -179,10 +179,8 @@ function levelDown(){
 }
 //--- Update Ops ----
 function updateOps(gear, level, strenght){
-  var auth = firebase.auth();
-  var uid = auth.uid;
-  console.log(uid);
-  const dbRefObject = firebase.database().ref().child('Users/');
+
+  const dbRefObject = firebase.database().ref().child('Users');
 
   //A post entry
   var postData = {
