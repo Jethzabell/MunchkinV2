@@ -2,7 +2,7 @@
   //Get elements
   const preObject = document.getElementById('object');
   const ulTable = document.getElementById('tabla');
-  var currentUser = firebase.auth().currentUser.uid;
+
   //Create references
   const dbRefObject = firebase.database().ref().child('Users');
   //Sync object changes - tutorial.html
@@ -96,7 +96,7 @@ function insertAutoKey() {
 function getGear(){
   var gear;
   const preObject = document.getElementById('gearOut');
-
+  var currentUser = firebase.auth().currentUser.uid;
   //Create references
   const dbRef = firebase.database().ref().child('Users/'+currentUser+'/Gear');
 
@@ -112,6 +112,7 @@ function getGear(){
 function getStrenght(){
   var strenght;
   const preObject = document.getElementById('strenghtOut');
+    var currentUser = firebase.auth().currentUser.uid;
 
   //Create references
   const dbRef = firebase.database().ref().child('Users/'+currentUser+'/Strenght');
@@ -128,6 +129,7 @@ function getStrenght(){
 function getLevel(){
   var level;
   const preObject = document.getElementById('levelOut');
+    var currentUser = firebase.auth().currentUser.uid;
   //Create references
   const dbRef = firebase.database().ref().child('Users/'+currentUser+'/Level');
 
@@ -180,7 +182,7 @@ function levelDown(){
 function updateOps(gear, level, strenght){
 
   const dbRefObject = firebase.database().ref().child('Users');
-
+  var currentUser = firebase.auth().currentUser.uid;
 
   //A post entry
   var postData = {
