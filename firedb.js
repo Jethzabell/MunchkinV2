@@ -167,8 +167,6 @@ function gearDown(){
   gear--;
   strenght = level + gear;
   updateOps(gear, level, strenght)
-  var currentUser = firebase.auth().currentUser.uid;
-  console.log(currentUser);
 }
 
 function levelDown(){
@@ -183,7 +181,7 @@ function levelDown(){
 function updateOps(gear, level, strenght){
 
   const dbRefObject = firebase.database().ref().child('Users');
-//var currentUser = firebase.auth().currentUser.uid;
+var currentUser = firebase.auth().currentUser.uid;
   //A post entry
   var postData = {
     Gear:gear,
@@ -195,7 +193,7 @@ function updateOps(gear, level, strenght){
   var newPostKey = dbRefObject.push().key;
   // Write the new post's data simultaneously in the posts list and the user's post list
   var updates = {};
-  updates['/Users/Jethzabell'] = postData;
+  updates['/Users/+currentUser'] = postData;
   //updates['/Users/Jethzabell'+ newPostKey] = postData;
   //updates['/user-posts/' + uid + '/' + newPostKey] = postData;
   return firebase.database().ref().update(updates);
