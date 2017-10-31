@@ -166,7 +166,9 @@ function gearDown(){
   var strenght = getStrenght();
   gear--;
   strenght = level + gear;
-  console.log(user.displayName);
+  var auth = firebase.auth();
+      var currentUser = auth.currentUser;
+  console.log(currentUser);
   updateOps(gear, level, strenght)
 }
 
