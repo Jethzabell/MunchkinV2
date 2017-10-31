@@ -182,7 +182,7 @@ function updateOps(gear, level, strenght){
   var auth = firebase.auth();
   var uid = auth.uid;
   console.log(uid);
-  const dbRefObject = firebase.database().ref().child('Users');
+  const dbRefObject = firebase.database().ref().child('Users/');
 
   //A post entry
   var postData = {
@@ -195,7 +195,7 @@ function updateOps(gear, level, strenght){
   var newPostKey = dbRefObject.push().key;
   // Write the new post's data simultaneously in the posts list and the user's post list
   var updates = {};
-  updates['/Users/uid'] = postData;
+  updates['/Users/Jethzabell'] = postData;
   //updates['/Users/Jethzabell'+ newPostKey] = postData;
   //updates['/user-posts/' + uid + '/' + newPostKey] = postData;
   return firebase.database().ref().update(updates);
