@@ -2,7 +2,6 @@
   //Get elements
   const preObject = document.getElementById('object');
   const ulTable = document.getElementById('tabla');
-  var displayName = firebase.auth().currentUser.displayName;
   //Create references
   const dbRefObject = firebase.database().ref().child('Users');
   //Sync object changes - tutorial.html
@@ -17,7 +16,7 @@
     var level = snap.child('Level').val();
     var strenght = snap.child('Strenght').val();
 
-    $(ulTable).append("<tr id="+snap.key+"><td>" + snap.currentUser.displayName + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td></tr>");
+    $(ulTable).append("<tr id="+snap.key+"><td>" + "jesssy" + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td></tr>");
 
   });  //child_added
 
@@ -27,7 +26,7 @@
     var level = snap.child('Level').val();
     var strenght = snap.child('Strenght').val();
 
-    $("#"+snap.key).html("<td>" + snap.currentUser.displayName + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td>");
+    $("#"+snap.key).html("<td>" + "jessy" + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td>");
 
   });  //child_changed
 
@@ -37,7 +36,7 @@
     var level = snap.child('Level').val();
     var strenght = snap.child('Strenght').val();
 
-    $("#"+snap.key).html("<td>" + snap.currentUser.displayName + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td>").remove();
+    $("#"+snap.key).html("<td>" + "jessy" + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td>").remove();
 
   }); //child_removed
 
