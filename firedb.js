@@ -8,14 +8,15 @@
   // dbRefObject.on('value', snap => {
   //   preObject.innerText = JSON.stringify(snap.val(), null, 3);
   // });
-  var name = firebase.auth().currentUser.displayName;
-  console.log(name);
+
   //Sync table changes
   dbRefObject.on('child_added', snap => {
 
     var gear = snap.child('Gear').val();
     var level = snap.child('Level').val();
+    var name = snap.child('Name').val();
     var strenght = snap.child('Strenght').val();
+
 
     $(ulTable).append("<tr id="+snap.key+"><td>" + name + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td></tr>");
 
@@ -25,9 +26,10 @@
 
     var gear = snap.child('Gear').val();
     var level = snap.child('Level').val();
+    var name = snap.child('Name').val();
     var strenght = snap.child('Strenght').val();
 
-    $("#"+snap.key).html("<td>" + "jessy" + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td>");
+    $("#"+snap.key).html("<td>" + name + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td>");
 
   });  //child_changed
 
@@ -35,9 +37,10 @@
 
     var gear = snap.child('Gear').val();
     var level = snap.child('Level').val();
+    var name = snap.child('Name').val();
     var strenght = snap.child('Strenght').val();
 
-    $("#"+snap.key).html("<td>" + "jessy" + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td>").remove();
+    $("#"+snap.key).html("<td>" + name + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td>").remove();
 
   }); //child_removed
 
