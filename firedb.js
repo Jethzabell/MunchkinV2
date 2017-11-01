@@ -205,10 +205,9 @@ function updateOps(gear, level, strenght){
 }
 
 function showWelcomeContainer() {
-
   var name = firebase.auth().currentUser.displayName;
     console.log(name);
-  $("userName").html("Hello" + name);
+  $("#userName").html("Hello" + name);
 }
 
 
