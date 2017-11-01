@@ -2,7 +2,7 @@
   //Get elements
   const preObject = document.getElementById('object');
   const ulTable = document.getElementById('tabla');
-
+  const displayName = firebase.auth().displayName;
   //Create references
   const dbRefObject = firebase.database().ref().child('Users');
   //Sync object changes - tutorial.html
@@ -17,7 +17,7 @@
     var level = snap.child('Level').val();
     var strenght = snap.child('Strenght').val();
 
-    $(ulTable).append("<tr id="+snap.key+"><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td></tr>");
+    $(ulTable).append("<tr id="+snap.key+"><td>" + displayName + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td></tr>");
 
   });  //child_added
 
@@ -27,7 +27,7 @@
     var level = snap.child('Level').val();
     var strenght = snap.child('Strenght').val();
 
-    $("#"+snap.key).html("<td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td>");
+    $("#"+snap.key).html("<td>" + displayName + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td>");
 
   });  //child_changed
 
@@ -37,7 +37,7 @@
     var level = snap.child('Level').val();
     var strenght = snap.child('Strenght').val();
 
-    $("#"+snap.key).html("<td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td>").remove();
+    $("#"+snap.key).html("<td>" + displayName + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td>").remove();
 
   }); //child_removed
 
@@ -49,12 +49,11 @@ function insertData() {
   var level = document.getElementById('level').value;
   var strenght = document.getElementById('strenght').value;
 
-  firebase.database().ref('Users/Emmanuel').set({
+  firebase.database().ref('Users').set({
     Gear:gear,
     Level:level,
     Strenght:strenght
   });
-
   //I can call also doing jquery
   /*$('#addButton').click(function(){
     dbRefObject.push({
@@ -69,6 +68,7 @@ function insertAutoKey() {
   var gear = document.getElementById('gear').value;
   var level = document.getElementById('level').value;
   var strenght = document.getElementById('strenght').value;
+
   const dbRefObject = firebase.database().ref().child('Users');
 
   parseInt(gear);
@@ -183,11 +183,12 @@ function updateOps(gear, level, strenght){
 
   const dbRefObject = firebase.database().ref().child('Users');
   var currentUser = firebase.auth().currentUser.uid;
-
+  var displayName = firebase.auth().displayName;
   //A post entry
   var postData = {
     Gear:gear,
     Level:level,
+    Name:displayName,
     Strenght:strenght
   };
 
