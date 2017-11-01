@@ -17,7 +17,7 @@
     var level = snap.child('Level').val();
     var strenght = snap.child('Strenght').val();
 
-    $(ulTable).append("<tr id="+snap.key+"><td>" + snap.displayName + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td></tr>");
+    $(ulTable).append("<tr id="+snap.key+"><td>" + snap.currentUser.displayName + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td></tr>");
 
   });  //child_added
 
@@ -27,7 +27,7 @@
     var level = snap.child('Level').val();
     var strenght = snap.child('Strenght').val();
 
-    $("#"+snap.key).html("<td>" + snap.displayName + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td>");
+    $("#"+snap.key).html("<td>" + snap.currentUser.displayName + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td>");
 
   });  //child_changed
 
@@ -37,7 +37,7 @@
     var level = snap.child('Level').val();
     var strenght = snap.child('Strenght').val();
 
-    $("#"+snap.key).html("<td>" + snap.displayName + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td>").remove();
+    $("#"+snap.key).html("<td>" + snap.currentUser.displayName + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td>").remove();
 
   }); //child_removed
 
