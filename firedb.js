@@ -8,7 +8,8 @@
   // dbRefObject.on('value', snap => {
   //   preObject.innerText = JSON.stringify(snap.val(), null, 3);
   // });
-
+  var name = firebase.auth().currentUser.displayName;
+  console.log(name);
   //Sync table changes
   dbRefObject.on('child_added', snap => {
 
@@ -16,7 +17,7 @@
     var level = snap.child('Level').val();
     var strenght = snap.child('Strenght').val();
 
-    $(ulTable).append("<tr id="+snap.key+"><td>" + "jesssy" + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td></tr>");
+    $(ulTable).append("<tr id="+snap.key+"><td>" + name + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td></tr>");
 
   });  //child_added
 
@@ -182,7 +183,6 @@ function updateOps(gear, level, strenght){
   var name = firebase.auth().currentUser.displayName;
   const dbRefObject = firebase.database().ref().child('Users');
   var currentUser = firebase.auth().currentUser.uid;
-  console.log(name);
   //A post entry
   var postData = {
     Gear:gear,
