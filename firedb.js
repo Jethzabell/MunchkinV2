@@ -2,7 +2,7 @@
   //Get elements
   const preObject = document.getElementById('object');
   const ulTable = document.getElementById('tabla');
-  const displayName = firebase.auth().currentUser.displayName;
+  var displayName = firebase.auth().currentUser.displayName;
   //Create references
   const dbRefObject = firebase.database().ref().child('Users');
   //Sync object changes - tutorial.html
