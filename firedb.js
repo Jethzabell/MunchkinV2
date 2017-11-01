@@ -205,7 +205,8 @@ function updateOps(gear, level, strenght){
 }
 
 function showWelcomeContainer() {
-  $("userName").html("Hello" + firebase.auth().currentUser.displayName);
+  var name = firebase.auth().currentUser.displayName
+  $("userName").html("Hello" + name);
 }
 
 
