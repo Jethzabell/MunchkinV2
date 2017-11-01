@@ -204,8 +204,9 @@ function updateOps(gear, level, strenght){
   return firebase.database().ref().update(updates);
 }
 
-
-
+function showWelcomeContainer() {
+  $("userName").html("Hello" + user.displayName);
+}
 
 
 
