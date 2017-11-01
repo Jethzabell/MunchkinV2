@@ -179,16 +179,15 @@ function levelDown(){
 }
 //--- Update Ops ----
 function updateOps(gear, level, strenght){
-
+  var name = firebase.auth().currentUser.displayName;
   const dbRefObject = firebase.database().ref().child('Users');
   var currentUser = firebase.auth().currentUser.uid;
-  var displayName = firebase.auth().currentUser.displayName;
-
+  console.log(name);
   //A post entry
   var postData = {
     Gear:gear,
     Level:level,
-    Name:displayName,
+    Name:name,
     Strenght:strenght
   };
 
