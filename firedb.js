@@ -2,7 +2,7 @@
   //Get elements
   const preObject = document.getElementById('object');
   const ulTable = document.getElementById('tabla');
-  const displayName = firebase.auth().displayName;
+  const displayName = firebase.auth().currentUser.displayName;
   //Create references
   const dbRefObject = firebase.database().ref().child('Users');
   //Sync object changes - tutorial.html
@@ -183,7 +183,8 @@ function updateOps(gear, level, strenght){
 
   const dbRefObject = firebase.database().ref().child('Users');
   var currentUser = firebase.auth().currentUser.uid;
-  var displayName = firebase.auth().displayName;
+  var displayName = firebase.auth().currentUser.displayName;
+
   //A post entry
   var postData = {
     Gear:gear,
