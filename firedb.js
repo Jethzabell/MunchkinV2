@@ -205,7 +205,7 @@ function updateOps(gear, level, strenght){
 }
 
 function showWelcomeContainer() {
-  var user = firebase.auth().currentUser.
+  var user = firebase.auth().currentUser;
   var name = user.displayName;
   var photoURL = user.photoURL;
 
