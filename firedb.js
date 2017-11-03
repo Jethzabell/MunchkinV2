@@ -56,9 +56,9 @@
       var phoneNumber = user.phoneNumber;
       var providerData = user.providerData;
       user.getIdToken().then(function(accessToken) {
-        document.getElementById('sign-in-status').textContent = 'Signed in';
-        document.getElementById('sign-in').textContent = 'Sign out';
-        document.getElementById('account-details').textContent = JSON.stringify({
+        //document.getElementById('sign-in-status').textContent = 'Signed in';
+        //document.getElementById('sign-in').textContent = 'Sign out';
+        //document.getElementById('account-details').textContent = JSON.stringify({
           displayName: displayName,
           email: email,
           emailVerified: emailVerified,
@@ -71,9 +71,9 @@
      });
     } else {
         // User is signed out.
-        document.getElementById('sign-in-status').textContent = 'Signed out';
-        document.getElementById('sign-in').textContent = 'Sign in';
-        document.getElementById('account-details').textContent = 'null';
+        //document.getElementById('sign-in-status').textContent = 'Signed out';
+        //document.getElementById('sign-in').textContent = 'Sign in';
+        //document.getElementById('account-details').textContent = 'null';
       }
     }, function(error) {
       console.log(error);
