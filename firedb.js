@@ -298,7 +298,7 @@ var topUserPostsRef = firebase.database().ref('user-posts/' + myUserId).orderByC
 
 // FirebaseUI config.
 var uiConfig = {
-  signInSuccessUrl: 'tutorial.html',
+  signInSuccessUrl: 'index.html',
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
     firebase.auth.GoogleAuthProvider.PROVIDER_ID
