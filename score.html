@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Munchkin</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/Team-with-rotating-cards.css">
+
+    <!-- My firebase code -->
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script src="config.js"></script>
+</head>
+
+<body>
+    <div></div>
+    <section class="card-section-imagia">
+        <h1>Munchkin</h1>
+        <h2>Scoreboard</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="card-container-imagia">
+                        <div class="card-imagia"></div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title" id="userName"></h3></div>
+                            <div class="panel-body"><img class="img-responsive" id="profilePic" src="" alt="No image loaded" style="margin:0px;height:190px;width:190px;margin-left:37px;"></div>
+                        </div>
+                        <div class="btn-group btn-group-lg" role="group" style="margin-left:60px;margin-bottom:3px;">
+                            <button class="btn btn-success" type="button" onclick="gearUp();" style="margin-right:3px;"> <i class="glyphicon glyphicon-plus"></i></button>
+                            <button class="btn btn-default" type="button" id="gearOut" disabled="disabled" style="margin-right:3px;">Level: 1</button>
+                            <button class="btn btn-danger" type="button" onclick="gearDown();"> <i class="glyphicon glyphicon-minus"></i></button>
+                        </div>
+                        <div class="btn-group btn-group-lg" role="group" style="margin-left:85px;margin-bottom:3px;">
+                            <button class="btn btn-success" type="button" onclick="levelUp();" style="margin-right:3px;margin-left:-24px;"> <i class="glyphicon glyphicon-plus"></i></button>
+                            <button class="btn btn-default" type="button" id="levelOut" disabled="disabled" style="margin-right:3px;padding-right:19px;">Gear: 0</button>
+                            <button class="btn btn-danger" type="button" onclick="levelDown();"> <i class="glyphicon glyphicon-minus"></i></button>
+                        </div>
+                        <div class="btn-group btn-group-lg" role="group" style="margin-left:60px;margin-bottom:3px;">
+                            <button class="btn btn-primary" type="button" onclick="showWelcomeContainer();" style="margin-right:3px;"> <i class="glyphicon glyphicon-user"></i></button>
+                            <button class="btn btn-default" type="button" id="strenghtOut" disabled="disabled" style="margin-right:3px;padding-left:1px;font-size:17px;">Stenght: 1</button>
+                        </div>
+                        <div></div>
+                        <div></div>
+                        <div class="btn-group btn-group-lg" role="group" style="margin-left:90px;"></div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card-container-imagia">
+                        <div class="card-imagia"></div>
+                        <div class="table-responsive">
+                          <!-- Adding table from firedb.js -->
+                            <table class="table" id="tabla">
+                                <thead>
+                                    <tr>
+                                        <th>Player </th>
+                                        <th>Level </th>
+                                        <th>Gear </th>
+                                        <th>Strenght </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-animation.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+
+    <!-- my firebase code -->
+    <script src="firedb.js"></script>
+</body>
+
+</html>
