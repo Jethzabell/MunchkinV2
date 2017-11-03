@@ -209,7 +209,7 @@ function showWelcomeContainer() {
     console.log(name);
   $("#userName").html("Hello " + name);
   var photoURL = user.photoURL;
-  $("#profilePic").html(photoURL);
+  $("#profilePic").attr("src", photoURL);
 
 }
 
