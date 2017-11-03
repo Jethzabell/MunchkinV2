@@ -208,6 +208,9 @@ function showWelcomeContainer() {
   var name = firebase.auth().currentUser.displayName;
     console.log(name);
   $("#userName").html("Hello " + name);
+  var photoURL = user.photoURL;
+  $("#profilePic").html(photoURL);
+
 }
 
 
