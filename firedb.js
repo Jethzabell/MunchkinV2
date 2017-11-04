@@ -215,6 +215,9 @@ function showWelcomeContainer() {
 
 }
 
+function restartGame(){
+  updateOps(1,0,1);
+}
 // FirebaseUI config.
 var uiConfig = {
   signInSuccessUrl: 'tutorial.html',
