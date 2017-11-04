@@ -53,6 +53,7 @@
       console.log(name);
       $("#userName").html("Hello " + name);
       $("#profilePic").attr("src", photoURL);
+      $("tittleMunchkin").show();
     }
   });
 
@@ -235,7 +236,7 @@ function restartGame(){
 }
 // FirebaseUI config.
 var uiConfig = {
-  signInSuccessUrl: 'tutorial.html',
+  signInSuccessUrl: 'score.html',
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
     firebase.auth.GoogleAuthProvider.PROVIDER_ID
