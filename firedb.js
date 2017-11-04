@@ -53,7 +53,7 @@
       console.log(name);
       $("#userName").html("Hello " + name);
       $("#profilePic").attr("src", photoURL);
-      $("tittleMunchkin").show();
+      $("#collapseNavBar").hide();
     }
   });
 
