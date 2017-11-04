@@ -44,6 +44,19 @@
 
   }); //child_removed
 
+  //Handle Account Status
+  firebase.auth().onAuthStateChanged(user => {
+    if(user) {
+      var name = user.displayName;
+      var photoURL = user.photoURL;
+
+      console.log(name);
+      $("#userName").html("Hello " + name);
+      $("#profilePic").attr("src", photoURL);
+    }
+  });
+
+
 }()); //end of function
 
 function insertData() {
@@ -204,6 +217,7 @@ function updateOps(gear, level, strenght){
   return firebase.database().ref().update(updates);
 }
 
+/*
 function showWelcomeContainer() {
   var user = firebase.auth().currentUser;
   var name = user.displayName;
@@ -214,6 +228,7 @@ function showWelcomeContainer() {
   $("#profilePic").attr("src", photoURL);
 
 }
+*/
 
 function restartGame(){
   updateOps(1,0,1);
