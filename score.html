@@ -6,22 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Munchkin</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
-    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/Team-with-rotating-cards.css">
-
-    <!-- My firebase code -->
-    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-    <script src="config.js"></script>
+    <link rel="stylesheet" href="assets/css/styles.min.css">
 </head>
 
 <body>
-    <div></div>
+    <div>
+        <nav class="navbar navbar-default navigation-clean">
+            <div class="container">
+                <div class="navbar-header"><a class="navbar-brand" href="#">MUNCHKIN </a>
+                    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                </div>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li role="presentation"><a href="#">Login </a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
     <section class="card-section-imagia">
-        <h1>Munchkin</h1>
-        <h2>Scoreboard</h2>
+        <h1 class="text-center hidden" style="margin-top:-39px;margin-bottom:27px;color:rgb(0,0,0);">Munchkin </h1>
+        <h2 style="margin-top:-11px;margin-bottom:27px;">Scoreboard </h2>
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-sm-6">
@@ -32,20 +38,21 @@
                                 <h3 class="panel-title" id="userName"></h3></div>
                             <div class="panel-body"><img class="img-responsive" id="profilePic" src="" alt="No image loaded" style="margin:0px;height:190px;width:190px;margin-left:37px;"></div>
                         </div>
-                        <div class="btn-group btn-group-lg" role="group" style="margin-left:60px;margin-bottom:3px;">
-                            <button class="btn btn-success" type="button" onclick="gearUp();" style="margin-right:3px;"> <i class="glyphicon glyphicon-plus"></i></button>
-                            <button class="btn btn-default" type="button" id="gearOut" disabled="disabled" style="margin-right:3px;">Level: 1</button>
-                            <button class="btn btn-danger" type="button" onclick="gearDown();"> <i class="glyphicon glyphicon-minus"></i></button>
+                        <div class="btn-group btn-group-justified" role="group" style="margin-left:0px;margin-bottom:3px;">
+                            <a class="btn btn-success" role="button" onclick="gearUp();" href="#" style="margin-right:3px;"> <i class="glyphicon glyphicon-plus"></i></a>
+                            <a class="btn btn-default disabled" role="button" id="gearOut" href="#" style="margin-right:3px;">Level: 1</a>
+                            <a class="btn btn-danger" role="button" onclick="gearDown();" href="#"> <i class="glyphicon glyphicon-minus"></i></a>
                         </div>
-                        <div class="btn-group btn-group-lg" role="group" style="margin-left:85px;margin-bottom:3px;">
-                            <button class="btn btn-success" type="button" onclick="levelUp();" style="margin-right:3px;margin-left:-24px;"> <i class="glyphicon glyphicon-plus"></i></button>
-                            <button class="btn btn-default" type="button" id="levelOut" disabled="disabled" style="margin-right:3px;padding-right:19px;">Gear: 0</button>
-                            <button class="btn btn-danger" type="button" onclick="levelDown();"> <i class="glyphicon glyphicon-minus"></i></button>
+                        <div class="btn-group btn-group-justified" role="group" style="margin-left:0px;margin-bottom:3px;">
+                            <a class="btn btn-success" role="button" onclick="levelUp();" href="#" style="margin-right:3px;"> <i class="glyphicon glyphicon-plus"></i></a>
+                            <a class="btn btn-default disabled" role="button" id="levelOut" href="#" style="margin-right:3px;">Gear: 0</a>
+                            <a class="btn btn-danger" role="button" onclick="levelDown();" href="#"> <i class="glyphicon glyphicon-minus"></i></a>
                         </div>
-                        <div class="btn-group btn-group-lg" role="group" style="margin-left:60px;margin-bottom:3px;">
-                            <button class="btn btn-primary" type="button" onclick="showWelcomeContainer();" style="margin-right:3px;"> <i class="glyphicon glyphicon-user"></i></button>
-                            <button class="btn btn-default" type="button" id="strenghtOut" disabled="disabled" style="margin-right:3px;padding-left:1px;font-size:17px;">Stenght: 1</button>
-                        </div>
+                        <div class="btn-group btn-group-justified" role="group" style="margin-left:0px;margin-bottom:3px;">
+                            <a class="btn btn-primary" role="button" onclick="showWelcomeContainer();" href="#" style="margin-right:3px;"> <i class="glyphicon glyphicon-user"></i></a>
+                            <a class="btn btn-default disabled" role="button" id="strenghtOut" href="#" style="margin-right:3px;">Strenght: 1</a>
+                            <a class="btn btn-warning" role="button" href="#" style="margin-left:0px;"><i class="glyphicon glyphicon-refresh"></i></a></div>
+                        <div></div>
                         <div></div>
                         <div></div>
                         <div class="btn-group btn-group-lg" role="group" style="margin-left:90px;"></div>
@@ -55,7 +62,7 @@
                     <div class="card-container-imagia">
                         <div class="card-imagia"></div>
                         <div class="table-responsive">
-                          <!-- Adding table from firedb.js -->
+                            <!-- Adding table from firedb.js -->
                             <table class="table" id="tabla">
                                 <thead>
                                     <tr>
@@ -77,8 +84,8 @@
     </section>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-animation.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+    <script src="assets/js/script.min.js"></script>
 
     <!-- my firebase code -->
     <script src="firedb.js"></script>
