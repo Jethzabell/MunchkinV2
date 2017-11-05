@@ -216,7 +216,7 @@ function restartGame(){
 }
 // FirebaseUI config.
 var uiConfig = {
-  signInSuccessUrl: 'score.html',
+  signInSuccessUrl: 'index.html',
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
     firebase.auth.GoogleAuthProvider.PROVIDER_ID
