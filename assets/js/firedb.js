@@ -116,7 +116,7 @@ function getGear(){
     gear = snap.val();
   });
 
-  return gear;
+  return "Gear: " + gear*1;
 }
 
 function getStrenght(){
@@ -177,7 +177,7 @@ function gearDown(){
   var strenght = getStrenght();
   gear--;
   strenght = level + gear;
-  updateOps(gear, level, strenght)
+  updateOps(gear, level, strenght);
 }
 
 function levelDown(){
