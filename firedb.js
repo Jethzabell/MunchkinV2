@@ -4,11 +4,6 @@
   const ulTable = document.getElementById('tabla');
   //Create references
   const dbRefObject = firebase.database().ref().child('Users');
-  //Sync object changes - tutorial.html
-  // dbRefObject.on('value', snap => {
-  //   preObject.innerText = JSON.stringify(snap.val(), null, 3);
-  // });
-
   //Sync table changes
   dbRefObject.on('child_added', snap => {
 
@@ -55,9 +50,7 @@
       $("#profilePic").attr("src", photoURL);
       $("#collapseNavBar").hide();
     }
-  });
-
-
+  });ß
 }()); //end of function
 
 function insertData() {
@@ -218,19 +211,6 @@ function updateOps(gear, level, strenght){
   return firebase.database().ref().update(updates);
 }
 
-/*
-function showWelcomeContainer() {
-  var user = firebase.auth().currentUser;
-  var name = user.displayName;
-  var photoURL = user.photoURL;
-
-  console.log(name);
-  $("#userName").html("Hello " + name);
-  $("#profilePic").attr("src", photoURL);
-
-}
-*/
-
 function restartGame(){
   updateOps(1,0,1);
 }
@@ -249,46 +229,3 @@ var uiConfig = {
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 // The start method will wait until the DOM is loaded.
 ui.start('#firebaseui-auth-container', uiConfig);
-
-
-
-
-
-
-
-
-/*
-function readAllData(){
-  dbRefObject.on('value', function(snap))
-}
-
-// Create a new post reference with an auto-generated id
-var newPostRef = postListRef.push();
-newPostRef.set({
-    // ...
-});
-
-var commentsRef = firebase.database().ref('post-comments/' + postId);
-commentsRef.on('child_added', function(data) {
-  addCommentElement(postElement, data.key, data.val().text, data.val().author);
-});
-
-commentsRef.on('child_changed', function(data) {
-  setCommentValues(postElement, data.key, data.val().text, data.val().author);
-});
-
-commentsRef.on('child_removed', function(data) {
-  deleteComment(postElement, data.key);
-});
-
-ref.once('value', function(snapshot) {
-  snapshot.forEach(function(childSnapshot) {
-    var childKey = childSnapshot.key;
-    var childData = childSnapshot.val();
-    // ...
-  });
-});
-
-var myUserId = firebase.auth().currentUser.uid;
-var topUserPostsRef = firebase.database().ref('user-posts/' + myUserId).orderByChild('starCount');
-*/
