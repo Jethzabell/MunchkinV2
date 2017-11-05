@@ -1,3 +1,5 @@
+//I should use regex expression to get value html  "gear: value"
+
 (function() {
   //Get elements
   const preObject = document.getElementById('object');
@@ -116,7 +118,7 @@ function getGear(){
     gear = snap.val();
   });
 
-  return "Gear: " + gear*1;
+  return gear;
 }
 
 function getStrenght(){
