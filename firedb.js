@@ -50,7 +50,7 @@
       $("#profilePic").attr("src", photoURL);
       $("#collapseNavBar").hide();
     }
-  });ß
+  });
 }()); //end of function
 
 function insertData() {
