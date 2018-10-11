@@ -1,5 +1,6 @@
-# MunchkinV2
-Munchkin BoardGame counter [learning FireBase]
+# Munchkin BoardGame counter 
+
+Learning Google FireBase - https://firebase.google.com/
 
 https://media.giphy.com/media/9JgcrepRuL8qff1QvG/giphy.gif
 
