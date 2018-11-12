@@ -1,113 +1,233 @@
-<!DOCTYPE html>
+//I should use regex expression to get value html  "gear: value"
 
-<head>
-        <meta charset="utf-8">
+(function() {
+  //Get elements
+  const preObject = document.getElementById('object');
+  const ulTable = document.getElementById('tabla');
+  //Create references
+  const dbRefObject = firebase.database().ref().child('Users');
+  //Sync table changes
+  dbRefObject.on('child_added', snap => {
 
-        <title>Intercambio</title>
-
-          <!-- My firebase code -->
-        <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>   
-    
-        <!-- Easily add sign-in to your Web app with FirebaseUI -->
-        <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />  
-
-        <script>
-        var config = {
-                apiKey: "AIzaSyBW_UVlgoqHZOscL6qXeFaI-ouRD03Pwgw",
-                authDomain: "intercambio-6993c.firebaseapp.com",
-                databaseURL: "https://intercambio-6993c.firebaseio.com",
-                projectId: "intercambio-6993c",
-                storageBucket: "intercambio-6993c.appspot.com",
-                messagingSenderId: "1001013270606"
-            };
-            firebase.initializeApp(config);
-            
-        </script>
-</head>
-<html>
-    <body>
-        <!-- The surrounding HTML is left untouched by FirebaseUI.
-        Your app may use that space for branding, controls and other customizations.-->
-        <div id="firebaseui-auth-container"></div>
-        <div id="loader">Loading...</div>
-
-        <h1>WE ARE LIVE</h1>
-        <p id="hola"></p>
-    </body>
-</html>
+    var gear = snap.child('Gear').val();
+    var level = snap.child('Level').val();
+    var name = snap.child('Name').val();
+    var strenght = snap.child('Strenght').val();
 
 
-<!-- my firebase code -->
-<script>
-    //-----Getters------
-    function displayWho(){
+    $(ulTable).append("<tr id="+snap.key+"><td>" + name + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td></tr>");
 
+  });  //child_added
 
-        //get current user
-        var currentUser = firebase.auth().currentUser.uid;
+  dbRefObject.on('child_changed', snap => {
 
-        //Create references
-        const dbRef = firebase.database().ref().child('Users/'+currentUser+'/Name/QuienTeToco');
-        document.getElementById('hola').innerText = currentUser;
-        //get the name of the user
-        dbRef.on('value', gotData, errData);
+    var gear = snap.child('Gear').val();
+    var level = snap.child('Level').val();
+    var name = snap.child('Name').val();
+    var strenght = snap.child('Strenght').val();
+
+    $("#"+snap.key).html("<td>" + name + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td>");
+
+  });  //child_changed
+
+  dbRefObject.on('child_removed', snap => {
+
+    var gear = snap.child('Gear').val();
+    var level = snap.child('Level').val();
+    var name = snap.child('Name').val();
+    var strenght = snap.child('Strenght').val();
+
+    $("#"+snap.key).html("<td>" + name + "</td><td>" + gear + "</td><td>" + level + "</td><td>" + strenght + "</td>").remove();
+
+  }); //child_removed
+
+  //Handle Account Status
+  firebase.auth().onAuthStateChanged(user => {
+    if(user) {
+      var name = user.displayName;
+      var photoURL = user.photoURL;
+
+      console.log(name);
+      $("#userName").html("Hello " + name);
+      $("#profilePic").attr("src", photoURL);
+      $("#collapseNavBar").hide();
     }
+  });
+}()); //end of function
 
-    function gotData(data){
-        document.getElementById('hola').innerText = data.val();
-    }
+function insertData() {
 
-    function errData(err){
-        console.log('Error: ' + err)
-    }
+  var gear = document.getElementById('gear').value;
+  var level = document.getElementById('level').value;
+  var strenght = document.getElementById('strenght').value;
 
-    // FirebaseUI config.
-    var uiConfig = {
-        callbacks: {
-            signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-            // User successfully signed in.
-            // Return type determines whether we continue the redirect automatically
-            // or whether we leave that to developer to handle.
-            return true;
-            },
-            uiShown: function() {
-            // The widget is rendered.
-            // Hide the loader.
-            document.getElementById('loader').style.display = 'none';
-        }
-    },
-    // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-    signInFlow: 'popup',
-    signInSuccessUrl: 'index.html',
-    signInOptions: [
-        // Leave the lines as is for the providers you want to offer your users.
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID
-    ],
-    // Terms of service url.
-    tosUrl: '<your-tos-url>',
-    // Privacy policy url.
-    privacyPolicyUrl: '<your-privacy-policy-url>'
-    };
+  firebase.database().ref('Users').set({
+    Gear:gear,
+    Level:level,
+    Strenght:strenght
+  });
+  //I can call also doing jquery
+  /*$('#addButton').click(function(){
+    dbRefObject.push({
+      Gear:$('#inputGear').val('');
+      Level:$('#inputLevel').val('');
+      Strenght:$('#inputSrenght').val('');
+    });
+  });*/
+}
 
-    // Initialize the FirebaseUI Widget using Firebase.
-    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+function insertAutoKey() {
+  var gear = document.getElementById('gear').value;
+  var level = document.getElementById('level').value;
+  var strenght = document.getElementById('strenght').value;
 
-    // The start method will wait until the DOM is loaded.
-    ui.start('#firebaseui-auth-container', uiConfig);
+  const dbRefObject = firebase.database().ref().child('Users');
 
-    
-    firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    // User is signed in.
-    displayWho();
-  } else {
-    // No user is signed in.
-  }
-});
+  parseInt(gear);
+  parseInt(strenght);
+  parseInt(level);
 
+  //A post entry
+  var postData = {
+    Gear:gear,
+    Level:level,
+    Strenght:strenght
+  };
 
-</script>
+  //Get a key for a new post
+  var newPostKey = dbRefObject.push().key;
+  // Write the new post's data simultaneously in the posts list and the user's post list
+  var updates = {};
+  updates['/Users/Jethzabell'] = postData;
+  //updates['/Users/Jethzabell'+ newPostKey] = postData;
+  //updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+  return firebase.database().ref().update(updates);
+}
 
+//-----Getters------
+function getGear(){
+  var gear;
+  const preObject = document.getElementById('gearOut');
+  var currentUser = firebase.auth().currentUser.uid;
+  //Create references
+  const dbRef = firebase.database().ref().child('Users/'+currentUser+'/Gear');
 
+  //Sync object changes - tutorial.html
+  dbRef.on('value', snap => {
+    preObject.innerText = snap.val();
+    gear = snap.val();
+  });
 
+  return gear;
+}
+
+function getStrenght(){
+  var strenght;
+  const preObject = document.getElementById('strenghtOut');
+    var currentUser = firebase.auth().currentUser.uid;
+
+  //Create references
+  const dbRef = firebase.database().ref().child('Users/'+currentUser+'/Strenght');
+
+  //Sync object changes - tutorial.html
+  dbRef.on('value', snap => {
+    preObject.innerText = snap.val();
+    strenght = snap.val();
+  });
+
+  return strenght;
+}
+
+function getLevel(){
+  var level;
+  const preObject = document.getElementById('levelOut');
+    var currentUser = firebase.auth().currentUser.uid;
+  //Create references
+  const dbRef = firebase.database().ref().child('Users/'+currentUser+'/Level');
+
+  //Sync object changes - tutorial.html
+  dbRef.on('value', snap => {
+    preObject.innerText = snap.val();
+    level = snap.val();
+  });
+
+  return level;
+}
+
+//------- Up --------
+function levelUp(){
+  var level = getLevel();
+  var gear = getGear();
+  var strenght = getStrenght();
+  level++;
+  strenght = gear + level;
+  updateOps(gear, level, strenght)
+}
+
+function gearUp(){
+  var level = getLevel();
+  var gear = getGear();
+  var strenght = getStrenght();
+  gear++;
+  strenght = gear + level;
+  updateOps(gear, level, strenght)
+}
+//------ Down -------
+function gearDown(){
+  var level = getLevel();
+  var gear = getGear();
+  var strenght = getStrenght();
+  gear--;
+  strenght = level + gear;
+  updateOps(gear, level, strenght);
+}
+
+function levelDown(){
+  var level = getLevel();
+  var gear = getGear();
+  var strenght = getStrenght();
+  level--;
+  strenght = gear + level;
+  updateOps(gear, level, strenght)
+}
+//--- Update Ops ----
+function updateOps(gear, level, strenght){
+  var name = firebase.auth().currentUser.displayName;
+  const dbRefObject = firebase.database().ref().child('Users');
+  var currentUser = firebase.auth().currentUser.uid;
+  //A post entry
+  var postData = {
+    Gear:gear,
+    Level:level,
+    Name:name,
+    Strenght:strenght
+  };
+
+  //Get a key for a new post
+  var newPostKey = dbRefObject.push().key;
+  // Write the new post's data simultaneously in the posts list and the user's post list
+  var updates = {};
+  updates['/Users/'+currentUser] = postData;
+  //updates['/Users/Jethzabell'+ newPostKey] = postData;
+  //updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+  return firebase.database().ref().update(updates);
+}
+
+function restartGame(){
+  updateOps(1,0,1);
+}
+// FirebaseUI config.
+var uiConfig = {
+  signInSuccessUrl: 'index.html',
+  signInOptions: [
+    // Leave the lines as is for the providers you want to offer your users.
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID
+  ],
+  // Terms of service url.
+  tosUrl: '<your-tos-url>'
+};
+
+// Initialize the FirebaseUI Widget using Firebase.
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+// The start method will wait until the DOM is loaded.
+ui.start('#firebaseui-auth-container', uiConfig);
